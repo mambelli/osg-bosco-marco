@@ -217,9 +217,9 @@ def install(platform, multiuser=False, options=None):
 if __name__ == "__main__":
   # invoked as installer (INSTALLER_NAME [install options])
   tmp_basename = os.path.basename(sys.argv[0])
-  if tmp_basename==INSTALLER_NAME or tmp_basename==SYSINSTALLER_NAME:
+  if tmp_basename.startswith(INSTALLER_NAME) or tmp_basename.startswith(SYSINSTALLER_NAME):
     res = findversion()
-    if tmp_basename==SYSINSTALLER_NAME:
+    if tmp_basename.startswith(SYSINSTALLER_NAME):
       install(res, True, sys.argv[1:])
     else:
       install(res, False, sys.argv[1:])
